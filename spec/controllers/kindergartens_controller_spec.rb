@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe KindergartensController, type: :controller do
   let(:kindergarten) { FactoryGirl.create(:kindergarten)}
 
+  # INDEX
   describe "GET #index" do
 
     it "returns http success" do

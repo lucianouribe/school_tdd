@@ -15,4 +15,7 @@ RSpec.describe Kindergarten, type: :model do
     end
   end
 
+  describe 'associations' do
+    it { should have_many :lessons }
+  end
 end

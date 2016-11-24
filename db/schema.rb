@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122223024) do
+ActiveRecord::Schema.define(version: 20161123024245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,4 +23,16 @@ ActiveRecord::Schema.define(version: 20161122223024) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.string   "subject"
+    t.string   "teacher"
+    t.string   "bully"
+    t.string   "bullied"
+    t.integer  "kindergarten_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["kindergarten_id"], name: "index_lessons_on_kindergarten_id", using: :btree
+  end
+
+  add_foreign_key "lessons", "kindergartens"
 end

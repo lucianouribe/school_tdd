@@ -19,6 +19,7 @@ class KindergartensController < ApplicationController
       flash[:error] = 'Fix errors and try again'
       render :new
     end
+
   end
 
   def update
@@ -32,6 +33,9 @@ class KindergartensController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
   end
 
   def destroy
