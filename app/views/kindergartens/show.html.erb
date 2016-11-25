@@ -1,16 +1,16 @@
 <h1><%= @kindergarten.name %></h1>
 
 <div class="row">
-  <div class="col s12 m6">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
+  <div class="col s12 m12">
+    <div class="card z-depth-0">
+      <div class="card-content">
         <span class="card-title"><%= @kindergarten.name %></span>
         <p>Open: <%= @kindergarten.open %></p>
         <p>Number of students: <%= @kindergarten.students %></p>
       </div>
       <div class="card-action">
-        <%= link_to 'Home', root_path %>
-        <%= link_to 'Lessons', kindergarten_lessons_path(@kindergarten) %>
+        <%= link_to 'Home', root_path, class: 'btn card-btn' %>
+        <%= link_to 'Lessons', kindergarten_lessons_path(@kindergarten), class: 'btn card-btn' %>
       </div>
     </div>
   </div>
