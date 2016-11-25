@@ -175,7 +175,7 @@ RSpec.describe LessonsController, type: :controller do
   end
 
 
-  # DESTROY
+  # DESTROY all pass
   describe "DELETE #destroy" do
 
     it "sets the lesson instance variable" do
@@ -183,12 +183,11 @@ RSpec.describe LessonsController, type: :controller do
       expect(assigns(:lesson)).to eq(lesson)
     end
 
-    # fails
     it "destroys the lesson" do
       lesson
-      expect(lesson.count).to eq(1) #undefined method `count'
+      expect(Lesson.count).to eq(1)
       delete :destroy, :kindergarten_id => lesson.kindergarten_id, id: lesson.id
-      expect(lesson.count).to eq(0)
+      expect(Lesson.count).to eq(0)
     end
 
     it "sets the flash message" do
