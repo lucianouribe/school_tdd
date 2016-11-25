@@ -11,21 +11,10 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(lesson_params)
-    if @lesson.save
-      flash[:success] = 'Lesson Created!'
-      redirect_to lesson_path(@lesson)
-    else
-      flash[:error] = 'Fix errors and try again'
-      render :new
-    end
-  end
-
-  def create
     @lesson = @kindergarten.lessons.new(lesson_params)
     if @lesson.save
       flash[:success] = 'Lesson Created!'
-      redirect_to kindergarten_lessons_path(@kindergarten, @lesson)
+      redirect_to kindergarten_lesson_path(@kindergarten, @lesson)
     else
       flash[:error] = 'Fix errors and try again'
       render :new
@@ -38,11 +27,11 @@ class LessonsController < ApplicationController
 
   def update
     if @lesson.update(lesson_params)
-      flash[:success] = 'Lesson Created!'
-      redirect_to kindergarten_lessons_path(@kindergarten, @lesson)
+      flash[:success] = 'Lesson Updated!'
+      redirect_to kindergarten_lesson_path(@kindergarten, @lesson)
     else
       flash[:error] = 'Fix errors and try again'
-      render :new
+      render :edit
     end
   end
 
@@ -52,7 +41,7 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     flash[:success] = 'Lesson Successfully Deleted!'
-    redirect_to kindergarten_lesson_path(@lesson)
+    redirect_to kindergarten_lesson_path(@kindergarten)
   end
 
   private
