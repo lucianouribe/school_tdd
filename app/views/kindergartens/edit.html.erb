@@ -1,2 +1,7 @@
-<h1>Kindergartens#edit</h1>
-<p>Find me in app/views/kindergartens/edit.html.erb</p>
+<h1>Edit Kindergarten: <%= @kindergarten.name%></h1>
+
+<%= render(partial: 'form') %>
+
+<div class="center">
+  <%= link_to 'Home', root_path, class: 'btn' %>
+</div>

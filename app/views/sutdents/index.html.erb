@@ -1,2 +1,31 @@
-<h1>Sutdents#index</h1>
-<p>Find me in app/views/sutdents/index.html.erb</p>
+<h1><%= @lesson.subject %></h1>
+<h3>Students</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Behaves?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lesson.sutdents.each do |student| %>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= student.behaves %></td>
+      <td><%= link_to 'Show', lesson_sutdent_path(@lesson, student), class: 'btn' %></td>
+      <td><%= link_to 'Edit', edit_lesson_sutdent_path(@lesson, student), class: 'btn' %></td>
+      <td><%= link_to 'Delete', lesson_sutdent_path(@lesson, student), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<hr/>
+<div class="center">
+  <%= link_to 'New Student', new_lesson_sutdent_path, class: 'btn' %>
+  <!-- back to lessons not working -->
+  <%= link_to 'Back to Lessons', kindergarten_lessons_path(@kindergarten.id, @lesson), class: 'btn' %>
+</div>

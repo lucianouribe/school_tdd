@@ -1,2 +1,8 @@
-<h1>Sutdents#edit</h1>
-<p>Find me in app/views/sutdents/edit.html.erb</p>
+<h1><%= @lesson.subject %></h1>
+<h3>Edit Student</h3>
+
+<%= render(partial: 'form') %>
+
+<div class="center">
+  <%= link_to 'Home', root_path, class: 'btn' %>
+</div>

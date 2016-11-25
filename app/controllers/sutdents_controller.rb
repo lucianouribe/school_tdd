@@ -40,7 +40,7 @@ class SutdentsController < ApplicationController
   def destroy
     @sutdent.destroy
     flash[:success] = 'Sutdent Successfully Deleted!'
-    redirect_to lesson_sutdent_path(@lesson)
+    redirect_to lesson_sutdents_path(@lesson)
   end
 
   private
@@ -48,11 +48,12 @@ class SutdentsController < ApplicationController
     params.require(:sutdent).permit(:name, :behaves)
   end
 
+  def set_sutdent
+    @sutdent = Sutdent.find(params[:id])
+  end
+
   def set_lesson
     @lesson = Lesson.find(params[:lesson_id])
   end
 
-  def set_sutdent
-    @sutdent = Sutdent.find(params[:id])
-  end
 end

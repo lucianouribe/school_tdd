@@ -1,0 +1,9 @@
+<div class="row">
+  <%= form_for [@lesson, @sutdent] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :behaves %>
+    <%= f.select :behaves, options_for_select(['yes', 'no'])%>
+    <%= f.submit 'save', class: 'btn' %>
+  <% end %>
+</div>

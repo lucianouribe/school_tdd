@@ -1,2 +1,9 @@
-<h1>Sutdents#new</h1>
-<p>Find me in app/views/sutdents/new.html.erb</p>
+<h1><%= @lesson.subject %></h1>
+<h3>Add Student</h3>
+
+<%= render(partial: 'form') %>
+
+<div class="center">
+  <%= link_to 'Home', root_path, class: 'btn' %>
+  <%= link_to 'Back to Lessons', kindergarten_lessons_path(@lesson), class: 'btn' %>
+</div>

@@ -1,0 +1,13 @@
+<div class="row">
+  <%= form_for [@kindergarten, @lesson] do |f| %>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+    <%= f.label :teacher %>
+    <%= f.text_field :teacher %>
+    <%= f.label :bully %>
+    <%= f.text_field :bully %>
+    <%= f.label :bullied %>
+    <%= f.text_field :bullied %>
+    <%= f.submit 'save', class: 'btn' %>
+  <% end %>
+</div>

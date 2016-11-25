@@ -1,0 +1,11 @@
+<div class="row">
+  <%= form_for @kindergarten do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :students %>
+    <%= f.number_field :students %>
+    <%= f.label :open %>
+    <%= f.select :open, options_for_select(['open', 'closed'])%>
+    <%= f.submit 'save', class: 'btn' %>
+  <% end %>
+</div>

@@ -1,2 +1,8 @@
-<h1>Lessons#new</h1>
-<p>Find me in app/views/lessons/new.html.erb</p>
+<h1><%= @kindergarten.name %></h1>
+<h3>Add New Lesson</h3>
+
+<%= render(partial: 'form') %>
+
+<div class="center">
+  <%= link_to 'Home', root_path, class: 'btn' %>
+</div>

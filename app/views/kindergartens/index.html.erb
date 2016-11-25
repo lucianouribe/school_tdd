@@ -1,2 +1,31 @@
-<h1>Kindergartens#index</h1>
-<p>Find me in app/views/kindergartens/index.html.erb</p>
+<h1>Kindergartens</h1>
+<p>Home of all the kindergartens in town</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number of Students</th>
+      <th>Is it Open?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @kindergartens.each do |kinder| %>
+    <tr>
+      <td><%= kinder.name %></td>
+      <td><%= kinder.students %></td>
+      <td><%= kinder.open %></td>
+      <td><%= link_to 'Show', kinder, class: 'btn' %></td>
+      <td><%= link_to 'Edit', edit_kindergarten_path(kinder), class: 'btn' %></td>
+      <td><%= link_to 'Delete', kinder, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<hr/>
+<div class="center">
+  <%= link_to 'New Kindergarten', new_kindergarten_path, class: 'btn' %>
+</div>
