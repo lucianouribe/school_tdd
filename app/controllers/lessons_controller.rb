@@ -44,6 +44,10 @@ class LessonsController < ApplicationController
     redirect_to kindergarten_lesson_path(@kindergarten)
   end
 
+  def all
+
+  end
+  
   private
   def lesson_params
     params.require(:lesson).permit(:subject, :teacher, :bully, :bullied)

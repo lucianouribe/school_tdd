@@ -59,33 +59,33 @@ RSpec.describe LessonsController, type: :controller do
   # CREATE
   describe "POST #create" do
 
-    before(:all) do
-      @lesson_params = { lesson: { subject: 'Math', teacher: 'Mrs_Antipathy', bully: 'Johnny', bullied: 'Charlie'} }
+    before(:each) do
+      @kindergarten = FactoryGirl.create(:kindergarten)
+      @lesson_params = {kindergarten_id: @kindergarten.id, lesson: { subject: 'Math', teacher: 'Mrs_Antipathy', bully: 'Johnny', bullied: 'Charlie'} }
     end
 
-    # fail #no route matches
+
     it "sets the lesson instance variable" do
       post :create, @lesson_params
       expect(assigns(:lesson)).to_not eq(nil)
       expect(assigns(:lesson).subject).to eq(@lesson_params[:lesson][:subject])
     end
 
-    # fail #no route matches
+
     it "creates a new lesson" do
       expect(Lesson.count).to eq(0)
       post :create, @lesson_params
       expect(Lesson.count).to eq(1)
-      expect(Lesson.first.name).to eq(@lesson_params[:lesson][:subject])
+      expect(Lesson.first.subject).to eq(@lesson_params[:lesson][:subject])
     end
 
-    # fail #no route matches
     it "sets a flash message on success" do
       post :create, @lesson_params
       expect(flash[:success]).to eq('Lesson Created!')
     end
 
     it "sets a flash message on error" do
-      post :create, { :kindergarten_id => lesson.kindergarten_id, id: lesson.id, lesson: { subject: nil, teacher: 'Mr_Test', bully: 'X', bullied: 'Y'}}
+      post :create, { :kindergarten_id => lesson.kindergarten_id, id: lesson.id, lesson: { subject: nil, teacher: 'bla', bully: 'Johnny', bullied: 'Charlie'}}
       expect(flash[:error]).to eq('Fix errors and try again')
     end
 
@@ -93,6 +93,7 @@ RSpec.describe LessonsController, type: :controller do
       post :create, { :kindergarten_id => lesson.kindergarten_id, id: lesson.id, lesson: { subject: nil, teacher: 'Mr_Test', bully: 'X', bullied: 'Y'}}
       expect(response).to render_template(:new)
     end
+
   end
 
 
