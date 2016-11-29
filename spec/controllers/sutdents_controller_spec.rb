@@ -13,7 +13,7 @@ RSpec.describe SutdentsController, type: :controller do
 
     # fail
     it 'sets the sutdents instance variable' do
-      get :index, :lesson_id => sutdent.lesson_id
+      get :index, { lesson_id: sutdent.lesson_id }
       expect(assigns(:sutdent)).to eq([]) #nil
     end
 
@@ -57,8 +57,9 @@ RSpec.describe SutdentsController, type: :controller do
   # CREATE all fail
   describe "POST #create" do
 
-    before(:all) do
-      @sutdent_params = { sutdent: { name: 'Charlie', behaves: false} }
+    before(:each) do
+      @lesson = FactoryGirl.create(:lesson)
+      @sutdent_params = { lesson_id: @lesson.id, sutdent: { name: 'Charlie', behaves: false} }
     end
 
     # fail #no route matches
@@ -135,7 +136,7 @@ RSpec.describe SutdentsController, type: :controller do
 
     it "redirect to show on success" do
       put :update, { :lesson_id => sutdent.lesson_id, id: sutdent.id, sutdent: { name: 'New sutdent'}}
-      expect(response).to redirect_to(lesson_sutdent_path(sutdent.id))
+      expect(response).to redirect_to(lesson_sutdent_path)
     end
 
     describe 'update failures' do

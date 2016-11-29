@@ -137,7 +137,7 @@ RSpec.describe LessonsController, type: :controller do
 
     it "redirect to show on success" do
       put :update, { :kindergarten_id => lesson.kindergarten_id, id: lesson.id, lesson: { subject: 'New lesson'}}
-      expect(response).to redirect_to(kindergarten_lesson_path(lesson.id))
+      expect(response).to redirect_to(kindergarten_lesson_path)
     end
 
     describe 'update failures' do
